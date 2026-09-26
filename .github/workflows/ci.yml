@@ -1,0 +1,27 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  # Fails when src/ and the committed contracts/ disagree. Consumers only ever
+  # read contracts/, at a tag, so this is the check that protects them.
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run check
+
+  # The docs convention and its checker belong to cbd-handbook. Pinned, so a
+  # change to the convention reaches this repo as a version bump, not a surprise.
+  docs:
+    uses: jagreehal/cbd-handbook/.github/workflows/check-docs.yml@v1.0.0
+    with:
+      handbook-ref: v1.0.0
