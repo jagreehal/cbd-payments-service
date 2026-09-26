@@ -12,7 +12,7 @@
         "id": {
           "type": "string"
         },
-        "amount": {
+        "value": {
           "type": "number",
           "exclusiveMinimum": 0
         },
@@ -40,7 +40,7 @@
       },
       "required": [
         "id",
-        "amount",
+        "value",
         "currency",
         "status",
         "createdAt"

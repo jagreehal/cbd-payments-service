@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const paymentSchema = z.object({
   id: z.string(),
-  amount: z.number().positive(),
+  value: z.number().positive(),
   currency: z.enum(['GBP', 'USD', 'EUR']),
   status: z.enum(['processing', 'completed', 'failed']),
   createdAt: z.iso.datetime(),
@@ -10,7 +10,7 @@ export const paymentSchema = z.object({
 export type Payment = z.infer<typeof paymentSchema>;
 
 export const createPaymentRequestSchema = paymentSchema.pick({
-  amount: true,
+  value: true,
   currency: true,
 });
 export type CreatePaymentRequest = z.infer<typeof createPaymentRequestSchema>;

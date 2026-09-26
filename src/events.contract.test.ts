@@ -11,7 +11,7 @@ import {
 
 const payment = {
   id: 'pay_fixed',
-  amount: 42,
+  value: 42,
   currency: 'GBP' as const,
   status: 'completed' as const,
   createdAt: '2026-01-01T00:00:00.000Z',
