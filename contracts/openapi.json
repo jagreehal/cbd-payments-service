@@ -15,7 +15,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "amount": {
+                  "value": {
                     "type": "number",
                     "minimum": 0,
                     "exclusiveMinimum": true
@@ -30,7 +30,7 @@
                   }
                 },
                 "required": [
-                  "amount",
+                  "value",
                   "currency"
                 ],
                 "additionalProperties": false
@@ -49,7 +49,7 @@
                     "id": {
                       "type": "string"
                     },
-                    "amount": {
+                    "value": {
                       "type": "number",
                       "minimum": 0,
                       "exclusiveMinimum": true
@@ -78,7 +78,7 @@
                   },
                   "required": [
                     "id",
-                    "amount",
+                    "value",
                     "currency",
                     "status",
                     "createdAt"
@@ -134,7 +134,7 @@
                     "id": {
                       "type": "string"
                     },
-                    "amount": {
+                    "value": {
                       "type": "number",
                       "minimum": 0,
                       "exclusiveMinimum": true
@@ -163,7 +163,7 @@
                   },
                   "required": [
                     "id",
-                    "amount",
+                    "value",
                     "currency",
                     "status",
                     "createdAt"

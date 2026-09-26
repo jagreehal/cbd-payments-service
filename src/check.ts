@@ -22,8 +22,8 @@ for (const [type, schema] of Object.entries(events)) {
   assert.deepEqual(read(`events/${type}.json`), schema, `events/${type}.json is stale — run \`pnpm run contracts\` and commit`);
 }
 
-assert.equal(createPaymentRequestSchema.safeParse({ amount: -5, currency: 'GBP' }).success, false);
-assert.equal(createPaymentRequestSchema.safeParse({ amount: 42, currency: 'GBP' }).success, true);
+assert.equal(createPaymentRequestSchema.safeParse({ value: -5, currency: 'GBP' }).success, false);
+assert.equal(createPaymentRequestSchema.safeParse({ value: 42, currency: 'GBP' }).success, true);
 assert.equal(
   paymentCompletedEventSchema.safeParse({ type: 'payment.completed', payment: {}, settledAt: 'nope' }).success,
   false
