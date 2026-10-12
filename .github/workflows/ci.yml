@@ -19,6 +19,26 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm run check
 
+  # Names the consumers a contract change breaks: the ones these contracts list,
+  # and the ones other repositories declare in their autocatalog.consumes.json,
+  # read from the company catalog.
+  drift:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: >-
+          pnpm exec autocatalog drift --base-ref origin/main --root . --format github
+          --consumers https://jagreehal.github.io/cbd-catalog/autocatalog/catalog.json
+
   # The docs convention and its checker belong to cbd-handbook. Pinned, so a
   # change to the convention reaches this repo as a version bump, not a surprise.
   docs:
