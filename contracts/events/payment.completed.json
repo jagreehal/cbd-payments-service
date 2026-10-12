@@ -12,10 +12,6 @@
         "id": {
           "type": "string"
         },
-        "amount": {
-          "type": "number",
-          "exclusiveMinimum": 0
-        },
         "currency": {
           "type": "string",
           "enum": [
@@ -40,7 +36,6 @@
       },
       "required": [
         "id",
-        "amount",
         "currency",
         "status",
         "createdAt"
