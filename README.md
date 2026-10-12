@@ -15,6 +15,10 @@ pnpm run contracts    # regenerate after a schema change, then commit
 pnpm start            # local server on :4000, writes events.ndjson
 ```
 
+A pull request also runs `autocatalog drift`. It fails a breaking contract change
+and names the consumers it reaches, including the ones other repositories
+declare in the company catalog.
+
 Consumers pin a tag. To publish a contract change, merge it and push a new tag
 (`git tag v1.1.0 && git push --tags`). Consumers move when they bump their pin.
 We pin `zod` to one version because its output is the contract.
