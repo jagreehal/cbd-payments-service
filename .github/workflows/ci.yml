@@ -37,7 +37,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: >-
           pnpm exec autocatalog drift --base-ref origin/main --root . --format github
-          --consumers https://jagreehal.github.io/cbd-catalog/autocatalog/catalog.json
+          --consumers https://jagreehal.github.io/cbd-catalog/catalog.json
 
   # The docs convention and its checker belong to cbd-handbook. Pinned, so a
   # change to the convention reaches this repo as a version bump, not a surprise.
